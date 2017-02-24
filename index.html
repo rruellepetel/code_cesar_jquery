@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Cesar</title>
+    <style media="screen">
+        div {
+            height: 100px;
+            width: 300px;
+            background-color:lightgrey;
+            border: 5px dashed yellow;
+        }
+    </style>
+    <script src="jquery-3.1.1.js"></script>
+</head>
+
+<body>
+    <textarea name="name" rows="8" cols="80" id="text"></textarea>
+    <button type="button" name="button" id="button">Crypter</button>
+    <div id="reponse"></div>
+</body>
+<script>
+    var alphabet = "abcdefghijklmnopqrstuvwxyz";
+    var shift = 2;
+    var texte = $("#text").val();
+    var mot = "";
+    $("#button").click(function() {
+        for (var i = 0; i < texte.length; i++) {
+            var lettre = texte[i];
+            var index = alphabet.indexOf(lettre);
+            lettre = alphabet[(index + shift) % 26];
+            mot += lettre;
+        }
+        $("#reponse").html(mot);
+    });
+</script>
+
+</html>
